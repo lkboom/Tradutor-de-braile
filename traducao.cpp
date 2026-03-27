@@ -1,6 +1,9 @@
 
 #include "dados.h"
 
+//Arquivo destinado as funções relacionadas a tradução de matrizes em carateres de braile
+//e alteração da string principal
+
 //Compara duas matrizes, index por index
 bool comparar_matrizes(int input[3][2], const int matriz_comparada[3][2]){
   for(int linha = 0; linha < 3; linha++){
@@ -19,7 +22,7 @@ bool comparar_matrizes(int input[3][2], const int matriz_comparada[3][2]){
 
 //Adiciona alguma letra ou valor simples à string de texto principal
 void adicionar(char caractere) {
-    if (tamanho_texto < maximo_texto - 1) {
+    if (tamanho_texto < MAX_TEXTO - 1) {
         texto[tamanho_texto++] = caractere;
         texto[tamanho_texto] = '\0';
     }
@@ -29,9 +32,9 @@ void adicionar(char caractere) {
 void traduzir(int input[3][2]){
 
   
-  for(int i = 0; i <5; i++){
-    if(comparar_matrizes(input, matriz_dados[i])){
-      adicionar(matriz_traducao[i]);
+  for(int i = 0; i < TOTAL_CARACTERES; i++){
+    if(comparar_matrizes(input, MATRIZ_DADOS[i])){
+      adicionar(MATRIZ_TRADUCAO[i]);
     }
   }
 }

@@ -1,8 +1,13 @@
 #pragma once
 
-extern const int maximo_texto;
+//Arquivo destinado a DELCARAR variáveis e constantes prncipais
+
+//Relacionados a string principal de texto
+extern const int MAX_TEXTO;
 extern char texto[];
 extern int tamanho_texto;
 
-extern const int matriz_dados[5][3][2];
-extern const char matriz_traducao[5];
+//Relacionados a tradução
+extern const int TOTAL_CARACTERES;
+extern const int MATRIZ_DADOS[26][3][2];
+extern const char MATRIZ_TRADUCAO[26];
