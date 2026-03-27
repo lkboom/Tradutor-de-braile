@@ -1,6 +1,8 @@
 // C++ code
 
 #include "matrizes.cpp"
+#include "dados.cpp"
+#include "traducao.cpp"
 
 // buzzer
 const int buzzerPin = 8;

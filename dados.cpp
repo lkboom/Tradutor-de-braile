@@ -1,5 +1,9 @@
 #include "dados.h"
 
+const int maximo_texto = 100;
+char texto[maximo_texto];
+int tamanho_texto = 0;
+
 const int matriz_dados[5][3][2] = {
 
     {

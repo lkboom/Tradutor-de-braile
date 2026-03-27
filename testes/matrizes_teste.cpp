@@ -6,7 +6,7 @@
 
 int input[3][2] = {
   {1,0},
-  {1,0},
+  {0,1},
   {0,0}
 };
 
@@ -19,11 +19,21 @@ int outra[3][2] = {
 
 int main(){
 
-  if (traduzir(input)){
-    std :: cout << "Traduziu";
-  }else{
-    std::cout << "Não traduziu";
-  }
+  // if (traduzir(input)){
+  //   std :: cout << "Traduziu";
+  // }else{
+  //   std::cout << "Não traduziu";
+  // }
+
+
+  traduzir(input);
+  int novo[3][2] = {
+    {1,0},
+    {0,0},
+    {0,0}
+  };
+  traduzir(novo);
+  std:: cout << texto << "\n";
 
 
   return 0;
