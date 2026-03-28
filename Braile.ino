@@ -9,13 +9,10 @@ const int buzzerPin = 8;
 
 // VERIFICAÇÃO DE MATRIZES 6 BOTOES PRINCIPAIS
 
-int matriz_base[3][2]={ // estrutura base das matrizes
-	{0,0},
-	{0,0},
-	{0,0}};
 int matriz_input[3][2]; // clone vazio da matriz base
 
-// Função pra debug do input
+
+//Printa uma representação da matriz do input pra fazer DEBUG NO ARDUINO
 void print_matrix(){
 
 	for (int y = 0; y < 3; y++) {         // 3 linhas, ou seja um valor de y por linha
@@ -61,11 +58,7 @@ void setup(){
 
   // clona a matriz vazia pra a input
 	// RAMSÉS LEMBRE DE TRANSFORMAR EM FUNÇÃO
-	for (int y = 0; y < 3; y++) {
-		for (int x = 0; x < 2; x++) {
-			matriz_input[y][x] = matriz_base[y][x];
-		}
-	}
+	cancelar_letra(matriz_input)
   
 	// PORTAS
 	// botões do braile

@@ -39,3 +39,35 @@ void traduzir(int input[3][2]){
   }
 }
 
+
+//Printa uma representação da matriz do input pra fazer DEBUG NO TERMINAL
+void print_matrix_teste(int input[3][2]){
+
+	for (int y = 0; y < 3; y++) {         // 3 linhas, ou seja um valor de y por linha
+		for (int x = 0; x < 2; x++) {       // 2 colunas/blocos por linha, ou seja, dois x em cada
+			std::cout << input[y][x];  // exibe as teclas selecionadas
+			std::cout << " ";
+		}
+	std::cout << "\n";
+	}
+	std::cout << "----------\n";
+}
+
+//Deixa o input zerado
+void cancelar_letra(int input[3][2]){
+  for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 2; j++){
+            input[i][j] = 0;
+        }
+    }
+}
+
+//Apaga o texto guardado por completo
+void excluir_texto(int input[3][2]){
+  texto[0] = '\0';
+  tamanho_texto = 0;
+  cancelar_letra(input);
+}
+
+
+  

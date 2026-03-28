@@ -7,6 +7,11 @@ const int MAX_TEXTO = 100;
 char texto[MAX_TEXTO];
 int tamanho_texto = 0;
 const int TOTAL_CARACTERES = 26;
+int matriz_input[3][2] = {
+    {0,0},
+    {0,0},
+    {0,0}
+};
 
 
 //Alfabeto de braile em forma de matrizes
