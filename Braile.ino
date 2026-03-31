@@ -9,12 +9,26 @@ const int buzzerPin = 8;
 
 // VERIFICAÇÃO DE MATRIZES 6 BOTOES PRINCIPAIS
 
+<<<<<<< HEAD
 
 // Função pra debug do input
 void print_matrix(){    
 	Serial.print(braile_input[y][x]); // exibe as teclas selecionadas
 	Serial.print(" ");
 	
+=======
+int matriz_input[3][2]; // clone vazio da matriz base
+
+
+//Printa uma representação da matriz do input pra fazer DEBUG NO ARDUINO
+void print_matrix(){
+
+	for (int y = 0; y < 3; y++) {         // 3 linhas, ou seja um valor de y por linha
+		for (int x = 0; x < 2; x++) {       // 2 colunas/blocos por linha, ou seja, dois x em cada
+			Serial.print(matriz_input[y][x]); // exibe as teclas selecionadas
+			Serial.print(" ");
+		}
+>>>>>>> 42cd762120f010596c07fb65de9896009d73b8a5
 	Serial.println();
 	Serial.println("--------");
 }
@@ -34,11 +48,15 @@ void setup(){
 
   // clona a matriz vazia pra a input
 	// RAMSÉS LEMBRE DE TRANSFORMAR EM FUNÇÃO
+<<<<<<< HEAD
 	//  for (int y = 0; y < 3; y++) {
 	//	  for (int x = 0; x < 2; x++) {
 	//	 	matriz_input[y][x] = matriz_base[y][x];
 	//  	}
 	//}
+=======
+	cancelar_letra(matriz_input)
+>>>>>>> 42cd762120f010596c07fb65de9896009d73b8a5
   
 	// PORTAS
 	// botões do braile

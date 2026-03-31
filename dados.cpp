@@ -2,6 +2,7 @@
 #include <cstdint>
 // L COMENTARIOS TEMPORÁROS: lns 9, 12, 16, 74
 
+<<<<<<< HEAD
 
 // Esse arquivo DEFINE todas as variáveis e constantes dos dados.h
 
@@ -74,12 +75,170 @@ const uint8_t ARRAY_DADOS[TOTAL_CARACTERES] = { // nome mudado (matriz-array)
     
     0b100111, //Z
     
+=======
+
+// Esse arquivo DEFINE todas as variáveis e constantes dos dados.h
+
+const int MAX_TEXTO = 100;
+char texto[MAX_TEXTO];
+int tamanho_texto = 0;
+const int TOTAL_CARACTERES = 26;
+int matriz_input[3][2] = {
+    {0,0},
+    {0,0},
+    {0,0}
+};
+
+
+//Alfabeto de braile em forma de matrizes
+const int MATRIZ_DADOS[TOTAL_CARACTERES][3][2] = {
+
+    {
+        //A
+        {1,0},
+        {0,0},
+        {0,0}
+    },
+    {
+        //B
+        {1,0},
+        {1,0},
+        {0,0}
+    },
+    {
+        //C
+        {1,1},
+        {0,0},
+        {0,0}
+    },
+    {
+        //D
+        {1,1},
+        {0,1},
+        {0,0}
+    },
+    {
+        //E
+        {1,0},
+        {0,1},
+        {0,0}
+    },
+    { //F
+        {1,1},
+        {1,0},
+        {0,0}
+    },
+    { //G
+        {1,1},
+        {1,1},
+        {0,0}
+    },
+    { //H
+        {1,0},
+        {1,1},
+        {0,0}
+    },
+    { //I
+        {0,1},
+        {1,0},
+        {0,0}
+    },
+    { //J
+        {0,1},
+        {1,1},
+        {0,0}
+    },
+    { //K
+        {1,0},
+        {0,0},
+        {1,0}
+    },
+    { //L
+        {1,0},
+        {1,0},
+        {1,0}
+    },
+    { //M
+        {1,1},
+        {0,0},
+        {1,0}
+    },
+    { //N
+        {1,1},
+        {0,1},
+        {1,0}
+    },
+    { //O
+        {1,0},
+        {0,1},
+        {1,0}
+    },
+    { //P
+        {1,1},
+        {1,0},
+        {1,0}
+    },
+    { //Q
+        {1,1},
+        {1,1},
+        {1,0}
+    },
+    { //R
+        {1,0},
+        {1,1},
+        {1,0}
+    },
+    { //S
+        {0,1},
+        {1,0},
+        {1,0}
+    },
+    { //T
+        {0,1},
+        {1,1},
+        {1,0}
+    },
+    { //U
+        {1,0},
+        {0,0},
+        {1,1}
+    },
+    { //V
+        {1,0},
+        {1,0},
+        {1,1}
+    },
+    { //W
+        {0,1},
+        {1,1},
+        {0,1}
+    },
+    { //X
+        {1,1},
+        {0,0},
+        {1,1}
+    },
+    { //Y
+        {1,1},
+        {0,1},
+        {1,1}
+    },
+    { //Z
+        {1,0},
+        {0,1},
+        {1,1}
+    }
+>>>>>>> 42cd762120f010596c07fb65de9896009d73b8a5
 
 };
 
 
 //Alfabeto de caracteres comuns pra associação na tradução
+<<<<<<< HEAD
 const char ARRAY_ASS_CHAR[TOTAL_CARACTERES] = { // nome mudado (matriz traducao-array ass char)
+=======
+const char MATRIZ_TRADUCAO[TOTAL_CARACTERES] = {
+>>>>>>> 42cd762120f010596c07fb65de9896009d73b8a5
     'A',
     'A',
     'B',
@@ -93,8 +252,11 @@ const char ARRAY_ASS_CHAR[TOTAL_CARACTERES] = { // nome mudado (matriz traducao-
     'I',
     'J',
     'K',
+<<<<<<< HEAD
     'K',
     'L',
+=======
+>>>>>>> 42cd762120f010596c07fb65de9896009d73b8a5
     'L',
     'M',
     'N',
