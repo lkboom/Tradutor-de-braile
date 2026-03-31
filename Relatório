@@ -1,1 +1,47 @@
+# RELATÓRIO
 
+RELATÓRIO DIA 25/03/2026
+    - DISCUSSÕES INICIAIS
+    - ESTRUTURA INICIAL DO CÓDIGO
+    - HARDWARE
+
+    - DISCUSSÕES INICIAIS
+        Idealização do projeto e objetivos: Tradutor de braile em português com output sonoro para suporte de deficientes visuais
+        Funcionamento: layout de 6 botões semelhantes aos caracteres do braile, com 3 botões extra, para DEL, SAVE e SUB,junto com
+        um visor auxiliar, que expõe os caracteres selecionados e seu equivalente no alfabeto
+            DEL (delete) - deleta tudo que foi digitado
+            SAVE - concatena o caractere para a palavra
+            SUB (submit) - envia a palavra inteira e ela é lida/soletrada em áudio
+    - ESTRUTURA INICIAL DO CÓDIGO
+        Código que verifica botão pressionado e substitui a coordenada equivalente da matriz de 0 para 1 e vice-versa
+        OBS.: o dispositivo faz barulhos diferentes em cada um dos processos
+    - HARDWARE
+        Sistema simples com Arduino UNO, protoboard, fios e 6 botões para a leitura dos caracteres
+
+RELATÓRIO DIA 29/03/2026
+    - PESQUISA de COMPONENTES
+        - ESP-32 Devkit
+        - DAC
+        - Amplificadores
+        - Módulos de áudio e opçoes viáveis para o projeto
+    - CONCLUSÃO
+        - ESP-32 Devkit 1 é melhor que o Arduino para processamento, e precisamos disso
+        - Para ytestes iniciais, vamos procurar bibliotecas que nos permitam utilizar a saída de áudio do computador ou procurar
+        amplificadores a nossa disposição.
+        No entanto, no futuro, vamos precisar de um Módulo de áudio
+
+RELATÓRIO DIA 30/03/2026
+    - ESTUDO
+        Estudos de C++ e eficiência de código
+
+RELATÓRIO DIA 31/03/2026
+    - PESQUISA
+    - SUBSTITUIÇÃO
+    - POLIMENTO
+
+    - PESQUISA
+    Pesquisamos sobre uint8_t, representação de números e a leitura de A, B, K e L em braile
+    - SUBSTITUIÇÃO
+    Iniciamos o processo de substituição de matrizes por uint8_t, por motivos de economia de processamento
+    - POLIMENTO
+    Limpamos código e substituímos nomes de variáveis e funções
