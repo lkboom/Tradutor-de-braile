@@ -1,19 +1,16 @@
 #include "dados.h"
 #include <stdint.h>
-// L COMENTARIOS TEMPORÁROS: lns 9, 12, 16, 74
-
 
 // Esse arquivo DEFINE todas as variáveis e constantes dos dados.h
 
 const int MAX_TEXTO = 100;
-char texto_input[MAX_TEXTO]; // (texto - texto_input)
+char texto_input[MAX_TEXTO]; 
 int tamanho_texto = 0;
 const int TOTAL_CARACTERES = 30;
-uint8_t braile_input = 0b000000; // (matriz matriz_input - int braile_input)
-
+uint8_t braile_input = 0b000000; 
 
 //Alfabeto de braile em forma de array
-const uint8_t ARRAY_DADOS[TOTAL_CARACTERES] = { // nome mudado (matriz-array)
+const uint8_t ARRAY_DADOS[TOTAL_CARACTERES] = { 
     0b100000, //A
 
     0b010000, //A
@@ -78,7 +75,7 @@ const uint8_t ARRAY_DADOS[TOTAL_CARACTERES] = { // nome mudado (matriz-array)
 
 
 //Alfabeto de caracteres comuns pra associação na tradução
-const char ARRAY_ASS_CHAR[TOTAL_CARACTERES] = { // nome mudado (matriz traducao-array ass char)
+const char ARRAY_ASS_CHAR[TOTAL_CARACTERES] = {  
     'A',
     'A',
     'B',

@@ -1,16 +1,25 @@
 // C++ code
 
+//Bibliotecas
 #include <stdint.h>
+#include <Bounce2.h>
 
-//#include "matrizes.cpp"
+//dados e funções externas
 #include "dados.h"
 #include "traducao.h"
 
-// buzzer
+//VARIÁVEIS
+const int INTERVALO = 25;
+
+const int brailePin [6] = {13,12,10,7,6,5};
+const int indicesBraile [6] = {2, 1, 0, 5, 4, 3};
+const int traduzirPin = 2;
+const int excluirPin = 4;
 const int buzzerPin = 8;
 
-// VERIFICAÇÃO DE MATRIZES 6 BOTOES PRINCIPAIS
-
+Bounce botoes_braile[6];
+Bounce botao_traduzir = Bounce();
+Bounce botao_excluir = Bounce();
 
 // Função pra debug do input
 void print_matrix(uint8_t valor){  
@@ -24,7 +33,13 @@ void print_matrix(uint8_t valor){
 void write_matrix(int pos){
 	delay(300);
 	braile_input = braile_input ^ (1 << pos);
-  print_matrix(braile_input);
+    print_matrix(braile_input);
+
+    if (bitRead(braile_input, pos)) {
+        tone(buzzerPin, 600, 100); 
+    } else {
+        tone(buzzerPin, 300, 100);
+    }
 }
 
 //------------SETUP-------------------
@@ -35,19 +50,19 @@ void setup(){
   
 	// PORTAS
 	// botões do braile
-	pinMode(13, INPUT_PULLUP);
-	pinMode(12, INPUT_PULLUP);
-	pinMode(10, INPUT_PULLUP);
-	pinMode(7, INPUT_PULLUP);
-	pinMode(6, INPUT_PULLUP);
-	pinMode(5, INPUT_PULLUP);
+    for(int i = 0; i < 6; i++){
+        botoes_braile[i].attach(brailePin[i], INPUT_PULLUP);
+        botoes_braile[i].interval(INTERVALO);
+    }
 
     //BOTÕES DE AÇÕES
-    pinMode(4, INPUT_PULLUP);
-	pinMode(3, INPUT_PULLUP);
-	pinMode(2, INPUT_PULLUP);
-	
-	// buzzer
+	botao_traduzir.attach(traduzirPin, INPUT_PULLUP);
+    botao_traduzir.interval(INTERVALO);
+
+	botao_excluir.attach(excluirPin, INPUT_PULLUP);
+    botao_excluir.interval(INTERVALO);
+
+    // buzzer
 	pinMode(8, OUTPUT);
 
 	  
@@ -59,42 +74,35 @@ void setup(){
 //----------------LOOP-------------------
 void loop(){
 
-    // le a porta enquanto o botão for pressionado e roda o verificador que troca os valores
-    if(digitalRead(13) == LOW){
-    write_matrix(2);}
+    for (int i = 0; i < 6; i++) {
+        botoes_braile[i].update();
+    }
+    botao_traduzir.update();
+    botao_excluir.update();
 
-    if(digitalRead(12) == LOW){
-    write_matrix(1);}
-
-    if(digitalRead(10) == LOW){
-    write_matrix(0);}
-
-    if(digitalRead(7) == LOW){
-    write_matrix(5);}  
-
-    if(digitalRead(6) == LOW){
-    write_matrix(4);}
-
-    if(digitalRead(5) == LOW){
-    write_matrix(3);}
+    for (int i = 0; i < 6; i++) {
+        if (botoes_braile[i].fell()) {
+            write_matrix(indicesBraile[i]);
+        }
+    }    
 
 	// botões de função
+    if (botao_traduzir.fell()) {
+        traduzir(braile_input);
+        Serial.println(texto_input);
+        print_matrix(braile_input);
+        tone(buzzerPin, 700, 60);
+        delay(130);
+        tone(buzzerPin, 700, 60);
+    }
 
-	if(digitalRead(2) == LOW){
-	 	traduzir(braile_input);
-		Serial.println(texto_input);
-		print_matrix(braile_input);
-		delay(300);
-	}
-	//if(digitalRead(3) == LOW){   
-    //	funcSubmit();
-	//}
-	if(digitalRead(4) == LOW){
-	 	funcDel(braile_input);
-		Serial.println(texto_input);
-		print_matrix(braile_input);
-		delay(300);
-	}	
+    if (botao_excluir.fell()) {
+        funcDel(braile_input);
+        Serial.println(texto_input);
+        print_matrix(braile_input);
+        tone(buzzerPin, 200, 400);
+    }   
+		
   
-  delay(10);
+    delay(10);
 }

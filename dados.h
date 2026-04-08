@@ -16,7 +16,7 @@ extern int tamanho_texto; // tamanho atual
 extern uint8_t braile_input;
 
 // Alfabeto
-extern const int TOTAL_CARACTERES; // 26 atualmente
-extern const uint8_t ARRAY_DADOS[30]; // caracteres em braile
-extern const char ARRAY_ASS_CHAR[30]; // nome trocado (traducao-ass_char)
+extern const int TOTAL_CARACTERES; // 30 atualmente
+extern const uint8_t ARRAY_DADOS[]; // caracteres em braile
+extern const char ARRAY_ASS_CHAR[]; // nome trocado (traducao-ass_char)
 
