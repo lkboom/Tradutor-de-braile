@@ -14,6 +14,7 @@ extern int tamanho_texto; // tamanho atual
 
 // Relacionados a tradução
 extern uint8_t braile_input;
+extern const uint8_t modifier;
 
 // Alfabeto
 extern const int TOTAL_CARACTERES; // 30 atualmente

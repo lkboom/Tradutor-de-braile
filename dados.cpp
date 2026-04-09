@@ -6,8 +6,9 @@
 const int MAX_TEXTO = 100;
 char texto_input[MAX_TEXTO]; 
 int tamanho_texto = 0;
-const int TOTAL_CARACTERES = 30;
-uint8_t braile_input = 0b000000; 
+const int TOTAL_CARACTERES = 44;
+uint8_t braile_input = 0b000000;
+const uint8_t modifier = 0b010111;
 
 //Alfabeto de braile em forma de array
 const uint8_t ARRAY_DADOS[TOTAL_CARACTERES] = { 
@@ -70,7 +71,38 @@ const uint8_t ARRAY_DADOS[TOTAL_CARACTERES] = {
     0b110111, //Y
     
     0b100111, //Z
+
+    // numeros
     
+    0b1100000, //1
+
+    0b1010000, //1
+
+    0b1101000, //2
+
+    0b1010100, //2
+
+    0b1110000, //3 
+    
+    0b1110100, //4
+    
+    0b1100100, //5
+    
+    0b1111000, //6
+    
+    0b1111100, //7
+    
+    0b1101100, //8
+    
+    0b1011000, //9
+    
+    0b1011100, //0
+
+    // simbolos
+
+    0b0, // _
+
+    0b1000000 // _
 };
 
 
@@ -105,5 +137,25 @@ const char ARRAY_ASS_CHAR[TOTAL_CARACTERES] = {
     'W',
     'X',
     'Y',
-    'Z'
+    'Z',
+
+    // numeros
+
+    '1',
+    '1',
+    '2',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '0',
+
+    // simbolos
+
+    '_',
+    '_'
 };

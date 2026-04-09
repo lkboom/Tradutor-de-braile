@@ -22,15 +22,47 @@ void adicionar(char caractere) {
 
 //
 void cancelar_letra(){
-  braile_input = 0;
+  for(int i = 0; i <= 5; i++){
+      braile_input &= ~(1 << i);
+    }
+}
+
+void modify(){
+  cancelar_letra();
+  braile_input = braile_input ^ (1 << 6);
 }
 
 // Compara se o valor do input é igual a algum da lista de todos os caracteres
-void traduzir(uint8_t input){
-  for(int i = 0; i <TOTAL_CARACTERES; i++){
-    if(compara_braile(input, ARRAY_DADOS[i])){
+void traduzir(uint8_t input) {
+  // 1. Verifica se o input é o modificador
+  if (compara_braile(input, modifier)) {
+    modify();
+    return; // Sai da função para não processar o resto
+  }
+
+  // 2. Verifica se o input é o caractere '_' (índice 42)
+  if (compara_braile(input, ARRAY_DADOS[42])) {
+    // Se o bit 6 estiver ativo (1)
+    if (braile_input & (1 << 6)) {
+      adicionar(ARRAY_ASS_CHAR[42]);
+      braile_input &= ~(1 << 6); // MODIFICA: desliga o bit 6
+    } 
+    // Se o bit 6 NÃO estiver ativo (0)
+    else {
+      adicionar(ARRAY_ASS_CHAR[42]);
+      // NÃO modifica o bit 6 (ele permanece 0)
+    }
+    cancelar_letra(); // Limpa os pontos Braille após adicionar
+    return;
+  }
+
+  // 3. Processamento normal para outros caracteres
+  for (int i = 0; i < TOTAL_CARACTERES; i++) {
+    if (compara_braile(input, ARRAY_DADOS[i])) {
       adicionar(ARRAY_ASS_CHAR[i]);
       cancelar_letra();
+      // Opcional: Se quiser que qualquer letra desligue o modifier, 
+      // adicione braile_input &= ~(1 << 6); aqui.
     }
   }
 }
@@ -45,12 +77,10 @@ void excluir_texto(uint8_t input){
 }
 
 void funcDel(uint8_t input){
-
   if(input == 0){
     excluir_texto(input);
   }else{
     cancelar_letra();
   }
-
 }
   
