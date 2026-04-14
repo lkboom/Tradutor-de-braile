@@ -40,20 +40,14 @@ void traduzir(uint8_t input) {
     return; // Sai da função para não processar o resto
   }
 
-  // 2. Verifica se o input é o caractere '_' (índice 42)
+  // 2. Verifica se o input é o caractere '_' (espaço/índice 42)
   if (compara_braile(input, ARRAY_DADOS[42])) {
-    // Se o bit 6 estiver ativo (1)
-    if (braile_input & (1 << 6)) {
-      adicionar(ARRAY_ASS_CHAR[42]);
-      braile_input &= ~(1 << 6); // MODIFICA: desliga o bit 6
-    } 
-    // Se o bit 6 NÃO estiver ativo (0)
-    else {
-      adicionar(ARRAY_ASS_CHAR[42]);
-      // NÃO modifica o bit 6 (ele permanece 0)
-    }
-    cancelar_letra(); // Limpa os pontos Braille após adicionar
-    return;
+      adicionar(ARRAY_ASS_CHAR[42]); // Adiciona o '_' ao texto
+      
+      // LOGICA DE RESET:
+      braile_input &= ~(1 << 6);     // Garante que o Bit 6 (modificador) seja desligado (0)
+      cancelar_letra();              // Limpa os pontos Braille (0 a 5)
+      return;
   }
 
   // 3. Processamento normal para outros caracteres
